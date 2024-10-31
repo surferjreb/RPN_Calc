@@ -36,7 +36,7 @@ class RPN_Calc:
                 case _:
                     temp = 0
                     # print('Not an operation')
-                    raise TypeError("Only operators accepted")
+                    raise ValueError("Only operators accepted")
             answer += temp
 
         return temp

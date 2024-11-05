@@ -10,9 +10,10 @@ class TestRpnCalc:
         return RPN_Calc()
     @pytest.fixture
     def valid_test(self):
-        args = '54+'
+        nums = [5,4]
+        ops = ['+']
         answer = 9
-        return args, answer
+        return nums, ops, answer
     # @pytest.fixture
     
     def test_rpn_is_class(self, rpn_calc):
@@ -24,8 +25,11 @@ class TestRpnCalc:
             ans = rpn_calc.calculate('54&')
         assert exc_info.value.args[0] == "Only operators accepted"
 
-    def test_calc_add(self):
-        assert 1==1
+    def test_calc_add(self, rpn_calc, valid_test):
+        args = valid_test[0]
+        answer = valid_test[3]
+        output = rpn_calc.calculate(args)
+        assert output == answer
 
     def test_calc_subtract(self):
         assert 1==1

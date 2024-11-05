@@ -12,7 +12,7 @@
 
 ---
 
-> ## Dependecies:
+> ## Dependencies:
 > can be found in requirements.txt
 >
 >

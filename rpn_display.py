@@ -18,9 +18,10 @@ class RpnDisplay:
         self.root.title('RPN Calc')
         self.eq = ["0"]
         self.display_text = StringVar(value=self.eq)
-       
+
 
     def setup_display(self):
+        '''Sets up main frame and second frame for buttons'''
         self.mainframe = ttk.Frame(self.root, padding="3 3 12 12")
         self.mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
         self.buttonframe = ttk.Frame(self.root, padding="2 2 2 2")
@@ -48,6 +49,7 @@ class RpnDisplay:
         self.buttonframe.columnconfigure(3, weight=1)
 
     def gen_display(self):
+        '''Generates the display and runs main window'''
         self.setup_display()
         dis_title = ttk.Label(self.mainframe, text="RPN Calc", font=T_FONT)
         dis_title.grid(column=0, row=0)
@@ -108,6 +110,7 @@ class RpnDisplay:
         self.root.mainloop()
 
     def btn_press(self, num):
+        '''sets the number value displayed when a key is pressed'''
         if len(self.eq) > 0:
             value = self.eq.pop()
             if value != '0':
@@ -121,14 +124,16 @@ class RpnDisplay:
         self.display_text.set(self.eq)
 
     def ent_press(self):
+        '''Advances stack'''
         self.eq.append("")
 
     def clr_press(self):
+        '''Clears the display'''
         self.eq.clear()
         self.display_text.set(self.eq)
 
     def eq_press(self):
-
+        '''Gets values and executes equation'''
         num1 = int(self.eq[0])
         num2 = int(self.eq[1])
         op = self.eq[2]

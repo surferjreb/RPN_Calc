@@ -49,12 +49,19 @@ class TestRpnCalc:
         result = rpn_calc.calculate(args[0], args[1], op)
         assert result == t_ans
 
-    def test_calc_divide(self):
-        assert 1==1
+    def test_calc_divide(self, rpn_calc):
+        '''Test Divide'''
+        args = 10, 5
+        op = '/'
+        t_ans = 2
+        result = rpn_calc.calculate(args[0], args[1], op)
+        assert t_ans==result
 
-    def test_calc_div_zero(self):
-        assert 1==1
+    def test_calc_div_zero(self, rpn_calc):
+        with pytest.raises(ZeroDivisionError) as exc_info:
+            ans = rpn_calc.calculate(5, 0, '/')
+        assert exc_info.value.args[0] == "Cannot divide by zero"
 
-    def test_calc_expon(self):
-        assert 1==1
+    # def test_calc_expon(self):
+    #     assert 1==1
 

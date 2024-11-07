@@ -42,4 +42,4 @@ class RPN_Calc:
         if b != 0:
             return a // b
         else:
-            raise ZeroDivisionError()
+            raise ZeroDivisionError("Cannot divide by zero")
